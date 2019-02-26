@@ -2,11 +2,13 @@
   "name": "cookbook",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "frontend/dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ts": "tsc -p .",
     "dev": "webpack-dev-server --mode development",
-    "prod": "webpack --mode production"
+    "prod": "webpack --mode production",
+    "start": "npm run build:ts && npm run dev"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,9 @@
 const path = require('path');
  
 module.exports = {
-    entry: './src/main/index.ts',
+    entry: './frontend/src/main/index.ts',
     output: {
-        filename: 'dist/index.js',
+        filename: './frontend/dist/index.js',
         path: __dirname
     },
     module: {
