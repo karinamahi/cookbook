@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2015",
+    "moduleResolution": "node",
     "target": "es5",
     "sourceMap": true,
     "outDir": "frontend/dist",
-    "noImplicitAny": true
+    "noImplicitAny": true,
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "frontend/src/**/*.ts"
+    "frontend/src/**/*.ts",
   ]
 }

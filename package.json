@@ -4,11 +4,13 @@
   "description": "",
   "main": "frontend/dist/index.js",
   "scripts": {
+    "clean": "gulp clean",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run clean && npm run build:ts && gulp templateToDist && webpack --mode production && gulp default",
     "build:ts": "tsc -p .",
     "dev": "webpack-dev-server --mode development",
     "prod": "webpack --mode production",
-    "start": "npm run build:ts && npm run dev"
+    "start": "npm rum build && node ./backend/bin/www"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "gulp": "^4.0.0",
     "ts-loader": "^5.3.0",
     "typescript": "^3.1.6",
     "vue": "^2.5.17",
@@ -32,7 +35,8 @@
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.26.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-stream": "^5.2.1"
   },
   "dependencies": {
     "vuetify": "^1.3.8"
