@@ -3,10 +3,6 @@ var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config.js');
 var del = require('del');
 
-gulp.task('hello', function() {
-  console.log(`Oi Gulp`);
-});
-
 gulp.task('clean', function () {
   return del([
     'frontend/dist/**/*',
@@ -21,23 +17,21 @@ gulp.task('vuetifyToPublic', function(){
 });
 
 
-gulp.task('teste', function() {
-    console.log("task test");
+gulp.task('distToPublic', function() {
+    console.log("task distToPublic");
     return gulp.src('frontend/dist/*.*')
-       // .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('backend/public'));
 });
 
 gulp.task('templateToDist', function(){
   console.log("task templateToDist..");
-  
   return gulp.src('*.html')
     .pipe(gulp.dest('frontend/dist'));
 });
 
-gulp.task('webpack',gulp.parallel('teste',  'vuetifyToPublic'), function(){
+gulp.task('webpack',gulp.parallel('distToPublic',  'vuetifyToPublic'), function(){
   console.log("task webpack..");
-  return gulp.src('frontend/dist/index.js') //main.js
+  return gulp.src('frontend/dist/index.js') 
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('frontend/dist'));
 });

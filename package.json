@@ -8,8 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run clean && npm run build:ts && gulp templateToDist && webpack --mode production && gulp default",
     "build:ts": "tsc -p .",
-    "dev": "webpack-dev-server --mode development",
-    "prod": "webpack --mode production",
     "start": "npm rum build && node ./backend/bin/www"
   },
   "repository": {
