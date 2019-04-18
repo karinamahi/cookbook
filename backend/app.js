@@ -32,6 +32,14 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/cookbook');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('MongoDB connected');
+});
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
