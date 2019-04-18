@@ -16,7 +16,6 @@ gulp.task('vuetifyToPublic', function(){
     .pipe(gulp.dest('backend/public'));
 });
 
-
 gulp.task('distToPublic', function() {
     console.log("task distToPublic");
     return gulp.src('frontend/dist/*.*')
