@@ -14,46 +14,62 @@
           <v-toolbar-title v-text="title"></v-toolbar-title>
         </v-toolbar>
         <v-content>
-          
+         
+        <v-layout row>
+          <v-navigation-drawer
+              v-model="drawer"
+              :mini-variant.sync="mini"
+              hide-overlay
+              stateless
+            >
+              <v-toolbar flat class="transparent">
+                <v-list class="pa-0">
+                  <v-list-tile avatar>
+                    <v-list-tile-avatar>
+                      <img src="https://randomuser.me/api/portraits/men/85.jpg">
+                    </v-list-tile-avatar>
 
-        <v-stepper v-model="e1" vertical>
-      
-        <template v-for="n in steps">
-          <v-stepper-step
-            :complete="e1 > n"
-            :key="`${n}-step`"
-            :step="n"
-            editable
-          >
-            Step {{ n }}
-          </v-stepper-step>
-        </template>
-      
+                    <v-list-tile-content>
+                      <v-list-tile-title>John Leider</v-list-tile-title>
+                    </v-list-tile-content>
 
-      <v-stepper-items>
-        <v-stepper-content
-          v-for="n in steps"
-          :key="`${n}-content`"
-          :step="n"
-        >
-          <v-card
-            class="mb-5"
-            color="grey lighten-1"
-            height="200px"
-          ></v-card>
+                    <v-list-tile-action>
+                      <v-btn
+                        icon
+                        @click.stop="mini = !mini"
+                      >
+                        <v-icon>chevron_left</v-icon>
+                      </v-btn>
+                    </v-list-tile-action>
+                  </v-list-tile>
+                </v-list>
+              </v-toolbar>
 
-          <v-btn
-            color="primary"
-            @click="nextStep(n)"
-          >
-            Continue
-          </v-btn>
+              <v-list class="pt-0" dense>
+                <v-divider></v-divider>
 
-          <v-btn flat>Cancel</v-btn>
-        </v-stepper-content>
-      </v-stepper-items>
-    </v-stepper>
+                <v-list-tile
+                  v-for="item in items"
+                  :key="item.title"
+                  @click="test(item.title)"
+                >
+                  <v-list-tile-action>
+                    <v-icon>{{ item.icon }}</v-icon>
+                  </v-list-tile-action>
 
+                  <v-list-tile-content>
+                    <router :to="item.to"><v-list-tile-title>{{ item.title }}</v-list-tile-title></router>
+                    
+                  </v-list-tile-content>
+                </v-list-tile>
+              </v-list>
+            </v-navigation-drawer>
+
+            <v-card-text><router-view></router-view></v-card-text>          
+        </v-layout> 
+         
+
+        </v-content>
           <v-footer class="blue darken-2">
             <v-layout row wrap align-center>
               <v-flex xs12>
@@ -66,8 +82,6 @@
               </v-flex>
             </v-layout>
           </v-footer>
-        </v-content>
-
       </v-app>
     </div>
     </body>
@@ -77,36 +91,38 @@
 <script>
 import Vue from "vue";
 import Vuetify from "vuetify";
+import RecipeDetails from "./RecipeDetails.vue"
  
 Vue.use(Vuetify);
 export default Vue.extend({
+  components: {
+    RecipeDetails
+  },
   data: function() {
-    return {
-      title: "Hello",
-      e6: 1,
-      steps: 5
-    };
+  return {
+      drawer: true,
+        items: [
+          { title: 'Home', icon: 'dashboard', to:"/" },
+          { title: 'Recipe', icon: 'question_answer', to: "/recipe" }
+        ],
+        mini: true,
+        right: null
+    }
   },
 
   watch: {
-      steps (val) {
-        if (this.e1 > val) {
-          this.e1 = val
-        }
-      }
+
     },
 
     methods: {
-      onInput (val) {
-        this.steps = parseInt(val)
-      },
-      nextStep (n) {
-        if (n === this.steps) {
-          this.e1 = 1
-        } else {
-          this.e1 = n + 1
-        }
-      }
+      test(title){
+            if(title == 'Home'){
+              console.log('Redirecting to home');
+              this.$router.push({path: '/'});
+              return;
+            }
+            this.$router.push({path:'recipe'});
+          },
     }
   
 });
