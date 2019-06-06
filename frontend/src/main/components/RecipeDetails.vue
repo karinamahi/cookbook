@@ -1,14 +1,14 @@
 <template>
     <div>
         <section>
-          <v-layout justify-center>
-            <v-flex xs12 sm10 md8 lg6>
+          <v-layout>
+            <v-flex xs12 sm12 md12 lg12>
               <v-card ref="form">
                 <v-card-text>
                   <v-text-field
                     ref="name"
-                    v-model="name"
-                    :rules="[() => !!name || 'This field is required']"
+                    v-model="recipe.name"
+                    :rules="[() => !!recipe.name || 'This field is required']"
                     :error-messages="errorMessages"
                     label="Name"
                     required
@@ -16,7 +16,7 @@
 
                   <v-text-field
                     ref="description"
-                    v-model="description"
+                    v-model="recipe.description"
                     :error-messages="errorMessages"
                     label="Description"
                     required
@@ -64,8 +64,10 @@ Vue.use(Vuetify);
 export default Vue.extend({
   data: function() {
     return {
-      name: "",
-      description: "",
+      recipe: {
+        name: "",
+        description: ""
+      },
        errorMessages: '',
        formHasErrors: false
     };
@@ -74,8 +76,7 @@ export default Vue.extend({
   computed: {
       form () {
         return {
-          name: this.name,
-          description: this.description,
+          recipe: {}
         }
       }
     },
@@ -97,15 +98,15 @@ export default Vue.extend({
         })
      },
       submit(){
-        console.log('Submiting...');
+        console.log('Submiting: ', this.recipe, this.errorMessages);
         this.formHasErrors = false
         
 
-        Object.keys(this.form).forEach(f => {
-          if (!this.form[f]) this.formHasErrors = true
+        // Object.keys(this.form).forEach(f => {
+        //   if (!this.form[f]) this.formHasErrors = true
 
-          this.$refs[f].validate(true)
-        })
+        //   this.$refs[f].validate(true)
+        // })
       }
     }
   
