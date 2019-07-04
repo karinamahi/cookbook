@@ -6,6 +6,11 @@
     "sourceMap": true,
     "outDir": "frontend/dist",
     "noImplicitAny": true,
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise"
+    ]
   },
   "exclude": [
     "node_modules"

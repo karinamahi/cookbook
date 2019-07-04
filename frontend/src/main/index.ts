@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Application from './components/Application.vue'
 import RecipeDetailsPage from './pages/RecipeDetailsPage.vue'
 
+
 Vue.use(VueRouter);
 
 const Home  = {

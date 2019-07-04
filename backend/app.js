@@ -51,4 +51,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// logging port
+app.listen(app.get("port"), () => {
+  console.log("Cookbook listening on port %d!" , app.get("port"));
+});
+
 module.exports = app;
