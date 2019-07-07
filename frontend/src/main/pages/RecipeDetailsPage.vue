@@ -8,6 +8,8 @@
 
             <v-divider class="mt-5"></v-divider>
 
+            <add-buttons/>
+
             <v-container>
               <h2>Aqui fica a lista de coisas</h2>
               <stuff-card></stuff-card>
@@ -22,6 +24,8 @@
         </v-flex>
       </v-layout>
     </section>
+
+    
 
     <v-card-actions>
       <v-btn flat>Cancel</v-btn>
@@ -46,12 +50,14 @@ import Vue from "vue";
 import RecipeDetails from "./../components/RecipeDetails.vue";
 import StepCard from "./../components/StepCard.vue";
 import StuffCard from "./../components/StuffCard.vue";
+import AddButtons from "./../components/AddButtons.vue"
 
 export default Vue.extend({
   components: {
     RecipeDetails,
     StepCard,
-    StuffCard
+    StuffCard,
+    AddButtons
   },
   data: function() {
     return {
