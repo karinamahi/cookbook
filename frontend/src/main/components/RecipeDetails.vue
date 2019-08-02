@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <v-card-text>
+    <v-container fluid>
       <v-text-field
         ref="name"
         v-model="recipe.name"
@@ -17,10 +16,20 @@
         label="Description"
         required
       ></v-text-field>
-    </v-card-text>
-  </div>
+    </v-container>
 </template>
 
+<style scoped>
+  .v-text-field {
+      font-size: 1.0em;
+      padding: 0em;
+      margin: 0em;
+  }
+  .container.grid-list-xl .layout .flex {
+      padding: 0em;
+      margin: 0.0em;
+  }
+</style>
 
 <script>
 import Vue from "vue";

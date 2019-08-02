@@ -1,9 +1,6 @@
 <template>
   <div>
     <section>
-      <v-layout>
-        <v-flex xs12 sm12 md12 lg12>
-          <v-card ref="form">
             <recipe-details></recipe-details>
 
             <v-divider class="mt-5"></v-divider>
@@ -20,9 +17,7 @@
               <h2>Aqui ficam as etapas</h2>
               <step-card></step-card>
             </v-container>
-          </v-card>
-        </v-flex>
-      </v-layout>
+
     </section>
 
     
