@@ -13,19 +13,19 @@ gulp.task('clean', function () {
 gulp.task('vuetifyToPublic', function(){
   console.log("task vuetifyToPublic..");
   return gulp.src('node_modules/vuetify/dist/**')
-    .pipe(gulp.dest('backend/public'));
+    .pipe(gulp.dest('backend/public/frontend/dist'));
 });
 
 gulp.task('distToPublic', function() {
     console.log("task distToPublic");
     return gulp.src('frontend/dist/*.*')
-        .pipe(gulp.dest('backend/public'));
+        .pipe(gulp.dest('backend/public/frontend/dist'));
 });
 
 gulp.task('templateToDist', function(){
   console.log("task templateToDist..");
   return gulp.src('*.html')
-    .pipe(gulp.dest('frontend/dist'));
+    .pipe(gulp.dest('backend/public'));
 });
 
 gulp.task('webpack',gulp.parallel('distToPublic',  'vuetifyToPublic'), function(){

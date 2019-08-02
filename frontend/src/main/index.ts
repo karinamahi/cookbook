@@ -7,7 +7,7 @@ import RecipeDetailsPage from './pages/RecipeDetailsPage.vue'
 Vue.use(VueRouter);
 
 const Home  = {
-  template: '<div>Home</div>'
+  template: '<div>Home Tests</div>'
 }
 
 const routes = [

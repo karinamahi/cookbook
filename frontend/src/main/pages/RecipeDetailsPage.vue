@@ -11,7 +11,7 @@
             <add-buttons/>
 
             <v-container>
-              <h2>Aqui fica a lista de coisas</h2>
+              <h2>Aqui fica a lista de coisas!!! Qualquer coisa</h2>
               <stuff-card></stuff-card>
             </v-container>
 
