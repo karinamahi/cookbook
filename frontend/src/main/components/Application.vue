@@ -2,7 +2,7 @@
   <v-app id="app" light>
     <v-content>
       <v-toolbar class="white" flat>
-        <v-toolbar-title v-text="title"></v-toolbar-title>
+        <v-toolbar-title></v-toolbar-title>
       </v-toolbar>
 
       <v-divider></v-divider>
@@ -17,17 +17,18 @@
                 </v-list-tile-action>
 
                 <v-list-tile-content>
-                  <router :to="item.to">
+                  <div :to="item.to">
                     <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                  </router>
+                  </div>
                 </v-list-tile-content>
               </v-list-tile>
             </v-list>
           </v-navigation-drawer>
 
-           <v-container fluid>
+           <v-layout column>
             <router-view></router-view>
-          </v-container>
+           </v-layout>
+
         </v-layout>
       </v-card>
     </v-content>
