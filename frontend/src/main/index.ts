@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Application from './components/Application.vue'
+import RecipeListPage from './pages/RecipeListPage.vue'
 import RecipeDetailsPage from './pages/RecipeDetailsPage.vue'
 
 
@@ -12,7 +13,8 @@ const Home  = {
 
 const routes = [
   { path: '/', component: Home},
-  { path: '/recipe', component: RecipeDetailsPage },
+  { path: '/recipe', component: RecipeListPage },
+  { path: '/recipe/:id/details', component: RecipeDetailsPage} 
 ]
 
 const router = new VueRouter({

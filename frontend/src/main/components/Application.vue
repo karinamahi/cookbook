@@ -11,7 +11,7 @@
         <v-layout row>
           <v-navigation-drawer height="700px" v-model="drawer" permanent>
             <v-list dense>
-              <v-list-tile v-for="item in items" :key="item.title" @click="test(item.title)">
+              <v-list-tile v-for="item in items" :key="item.title" @click="changePage(item)">
                 <v-list-tile-action>
                   <v-icon>{{ item.icon }}</v-icon>
                 </v-list-tile-action>
@@ -38,13 +38,10 @@
 <script>
 import Vue from "vue";
 import Vuetify from "vuetify";
-import RecipeDetails from "./RecipeDetails.vue";
 
 Vue.use(Vuetify);
 export default Vue.extend({
-  components: {
-    RecipeDetails
-  },
+
   data: function() {
     return {
       drawer: true,
@@ -60,13 +57,8 @@ export default Vue.extend({
   watch: {},
 
   methods: {
-    test(title) {
-      if (title == "Home") {
-        console.log("Redirecting to home");
-        this.$router.push({ path: "/" });
-        return;
-      }
-      this.$router.push({ path: "recipe" });
+    changePage(item) {
+      this.$router.push({ path: item.to });
     }
   }
 });

@@ -1,5 +1,5 @@
 <template>
-  <v-card :hover="hover" @click="getDetails(mainData.id)" flat>
+  <v-card :hover="hover" v-on:click="emitToPage" flat>
     <v-container grid-list-md>
       <v-layout wrap>
         <v-flex xs12 sm4 md1>
@@ -17,9 +17,6 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-card-actions sm-12>
-      <!-- <v-btn class="grey--text" flat>See more</v-btn> -->
-    </v-card-actions>
   </v-card>
 </template>
  
@@ -44,10 +41,11 @@ export default Vue.extend({
     };
   },
   methods: {
-    getDetails: function(projectId) {
-      console.log("Chamou getDetails..." + projectId);
-      this.$router.push({ path: `/projects/${projectId}/details` });
+    emitToPage(event){
+      console.log(`InfoCard: EmitToPage...`);
+      this.$emit('componentClick', this.$data.mainData);
     }
+
   }
 });
 </script>
